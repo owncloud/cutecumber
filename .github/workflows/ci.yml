@@ -29,13 +29,21 @@ jobs:
 
       # aqtinstall directly, instead of a third-party action outside the org's actions allowlist.
       # The desktop essentials include qtdeclarative: Qt Quick, Quick Controls 2 and Quick Widgets.
+      - name: Cache Qt
+        id: qt-cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ runner.temp }}/qt
+          key: qt-6.8.3-linux_gcc_64-aqtinstall-3.3.0
+
       - name: Install Qt
-        env:
-          QT_VERSION: "6.8.3"
+        if: steps.qt-cache.outputs.cache-hit != 'true'
         run: |
           python -m pip install "aqtinstall==3.3.0"
-          python -m aqt install-qt linux desktop "$QT_VERSION" linux_gcc_64 --outputdir "$RUNNER_TEMP/qt"
-          echo "CMAKE_PREFIX_PATH=$RUNNER_TEMP/qt/$QT_VERSION/gcc_64" >> "$GITHUB_ENV"
+          python -m aqt install-qt linux desktop 6.8.3 linux_gcc_64 --outputdir "$RUNNER_TEMP/qt"
+
+      - name: Use Qt
+        run: echo "CMAKE_PREFIX_PATH=$RUNNER_TEMP/qt/6.8.3/gcc_64" >> "$GITHUB_ENV"
 
       - name: Install build tools and Qt runtime libraries
         run: sudo apt-get update && sudo apt-get install -y ninja-build libgl1-mesa-dev libegl1 libxkbcommon0 libfontconfig1
@@ -50,6 +58,10 @@ jobs:
         env:
           QT_QPA_PLATFORM: offscreen
         run: ctest --test-dir build --output-on-failure
+
+      # tst_quick is skipped with only a CMake warning when Qt Quick Controls 2 is missing
+      - name: Check that the Qt Quick tests ran
+        run: ctest --test-dir build -N | grep -q tst_quick
 
   harness:
     name: Runner (Python ${{ matrix.python }})
