@@ -29,8 +29,8 @@ QuickWidgets). Add it as a subproject, for example with `FetchContent`, and link
 into the application executable, behind an option of your own that is off by default:
 
 ```cmake
-option(WITH_GUI_TEST_PROBE "Link the CuteCumber probe (test builds only)" OFF)
-if(WITH_GUI_TEST_PROBE)
+option(MYAPP_WITH_CUTECUMBER "Link the CuteCumber probe (test builds only)" OFF)
+if(MYAPP_WITH_CUTECUMBER)
     include(FetchContent)
     FetchContent_Declare(cutecumber
         GIT_REPOSITORY https://github.com/owncloud/cutecumber.git

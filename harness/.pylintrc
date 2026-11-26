@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2026 ownCloud GmbH - A Kiteworks Company and ownCloud contributors
 # SPDX-License-Identifier: MIT
 #
-# Run from harness/: pylint cutecumber shim tests
+# Run from harness/: pylint cutecumber shim/*.py tests/*.py (tests/ is no package)
 
 [MAIN]
 # The shim's Squish-named modules are imported by their bare names, the tests' helpers too
