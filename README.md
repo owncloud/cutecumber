@@ -148,7 +148,7 @@ cd harness
 pip install -e ".[test]" "black==24.3.*" "pylint==3.2.*"
 pytest
 black --check .
-pylint cutecumber shim/*.py tests/*.py
+pylint cutecumber cutecumber/shim/*.py tests/*.py
 ```
 
 CI (`.github/workflows/ci.yml`) builds the probe with Qt 6.8 and runs its tests, runs the runner's tests

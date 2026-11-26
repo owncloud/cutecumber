@@ -73,7 +73,7 @@ jobs:
         run: python -m black --check --diff .
 
       - name: Pylint
-        run: python -m pylint cutecumber shim/*.py tests/*.py
+        run: python -m pylint cutecumber cutecumber/shim/*.py tests/*.py
 
   zizmor:
     name: Zizmor

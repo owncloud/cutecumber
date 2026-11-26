@@ -5,4 +5,4 @@
 from pathlib import Path
 
 # Directory with the Squish-named modules; the runner puts it first on sys.path.
-SHIM_DIR = Path(__file__).resolve().parent.parent / "shim"
+SHIM_DIR = Path(__file__).resolve().parent / "shim"

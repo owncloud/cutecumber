@@ -1,11 +1,11 @@
 # SPDX-FileCopyrightText: 2026 ownCloud GmbH - A Kiteworks Company and ownCloud contributors
 # SPDX-License-Identifier: MIT
 #
-# Run from harness/: pylint cutecumber shim/*.py tests/*.py (tests/ is no package)
+# Run from harness/: pylint cutecumber cutecumber/shim/*.py tests/*.py (neither shim/ nor tests/ is a package)
 
 [MAIN]
 # The shim's Squish-named modules are imported by their bare names, the tests' helpers too
-init-hook='import sys; sys.path[:0] = ["shim", "tests"]'
+init-hook='import sys; sys.path[:0] = ["cutecumber/shim", "tests"]'
 enable=all
 disable=
     missing-docstring,

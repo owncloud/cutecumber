@@ -21,10 +21,13 @@ test = ["pytest"]
 cutecumber = "cutecumber.__main__:main"
 
 [tool.setuptools]
-# shim/ holds the Squish-named modules (squish, object, objectmaphelper, ...).
-# It is installed next to the cutecumber package and put first on sys.path by the
-# runner, so its modules are imported by their bare names, never as "shim.x".
-packages = ["cutecumber", "shim"]
+# cutecumber/shim/ holds the Squish-named modules (squish, object, objectmaphelper,
+# ...). It is package data, no package: the runner puts the directory first on
+# sys.path, so its modules are imported by their bare names only.
+packages = ["cutecumber"]
+
+[tool.setuptools.package-data]
+cutecumber = ["shim/*.py"]
 
 [tool.black]
 # Squish suites mix quote styles; the runner keeps them as written
@@ -32,5 +35,5 @@ skip-string-normalization = true
 target-version = ["py310"]
 
 [tool.pytest.ini_options]
-pythonpath = [".", "shim", "tests"]
+pythonpath = [".", "cutecumber/shim", "tests"]
 testpaths = ["tests"]

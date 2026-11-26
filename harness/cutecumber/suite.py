@@ -12,9 +12,8 @@ import threading
 import time
 from pathlib import Path
 
-from cutecumber import aut, bdd, builtins_setup, results
+from cutecumber import SHIM_DIR, aut, bdd, builtins_setup, results
 
-SHIM_DIR = Path(__file__).resolve().parent.parent / "shim"
 # What findFile returns for Squish's own BDD script; source() skips it.
 VIRTUAL_BDD = str(SHIM_DIR / "python" / "bdd.py")
 
