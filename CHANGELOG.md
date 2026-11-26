@@ -5,7 +5,7 @@ SPDX-License-Identifier: MIT
 
 # Changelog
 
-## 0.1.0 - unreleased
+## 0.1.0 - 2026-11-26
 
 The first release, extracted from owncloud/client, where the tool ran that project's GUI tests without
 Squish.
