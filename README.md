@@ -48,8 +48,8 @@ application needs no code changes. A standalone build also installs a `Cutecumbe
 0.x, only the same minor version matches.
 
 The probe's own tests build when the probe is the top-level project and `BUILD_TESTING` is on (the
-default; `-DBUILD_TESTING=OFF` skips them); as a subproject they are off. The option
-`CUTECUMBER_BUILD_TESTS` overrides either default:
+default; `-DBUILD_TESTING=OFF` or `-DCUTECUMBER_BUILD_TESTS=OFF` skips them). As a subproject they are
+off unless the application sets `CUTECUMBER_BUILD_TESTS=ON`. Standalone:
 
 ```sh
 cmake -S probe -B build -G Ninja

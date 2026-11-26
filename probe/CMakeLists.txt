@@ -95,15 +95,15 @@ if(CUTECUMBER_STANDALONE)
     )
 endif()
 
-# The probe's own tests build by default only when the probe is the top-level project and BUILD_TESTING (from
-# CTest) is on. An application that wants them sets CUTECUMBER_BUILD_TESTS=ON and runs them with:
-# ctest --test-dir <build>/<path to probe>
-if(CUTECUMBER_STANDALONE AND BUILD_TESTING)
-    set(CUTECUMBER_BUILD_TESTS_DEFAULT ON)
+# The probe's own tests build by default only when the probe is the top-level project, and there they follow
+# BUILD_TESTING (from CTest) on every configure, so -DBUILD_TESTING=OFF skips them. As a subproject they are off
+# unless the application sets CUTECUMBER_BUILD_TESTS=ON; it runs them with: ctest --test-dir <build>/<path to probe>
+if(CUTECUMBER_STANDALONE)
+    include(CMakeDependentOption)
+    cmake_dependent_option(CUTECUMBER_BUILD_TESTS "Build the probe's tests" ON "BUILD_TESTING" OFF)
 else()
-    set(CUTECUMBER_BUILD_TESTS_DEFAULT OFF)
+    option(CUTECUMBER_BUILD_TESTS "Build the probe's tests" OFF)
 endif()
-option(CUTECUMBER_BUILD_TESTS "Build the probe's tests" ${CUTECUMBER_BUILD_TESTS_DEFAULT})
 if(CUTECUMBER_BUILD_TESTS)
     enable_testing()
     add_subdirectory(tests)
