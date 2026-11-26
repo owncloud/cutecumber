@@ -1,7 +1,11 @@
 > **Origin note.** This implementation plan was written in owncloud/client, where CuteCumber started as
 > `test/gui/probe` and `test/gui/harness` (pull request #12720), before the tool moved into this repository.
-> It is kept as history: paths, names (`QtGuiProbe`, `QT_GUI_TEST_PROBE`, package `harness`) and plans refer
-> to the client at that time. See the README for the current names.
+> It is kept as history: the paths, names and layout in it predate the split and refer to the client at
+> that time. For example `test/gui/probe` is now `probe/`, `test/gui/harness/harness` is
+> `harness/cutecumber` and `test/gui/harness/shim` is `harness/cutecumber/shim`; the namespace `QtGuiProbe`
+> is `Cutecumber`, the CMake package `QtGuiProbe` is `CutecumberProbe` with the target `cutecumber::probe`,
+> `QT_GUI_TEST_PROBE` is `CUTECUMBER_PROBE`, `WITH_GUI_TEST_PROBE_TESTS` is `CUTECUMBER_BUILD_TESTS`, and
+> `python -m harness` / `qtguiprobe-run` is `cutecumber`. The [README](../../README.md) is authoritative.
 
 # Squish-free GUI Tests Implementation Plan
 

@@ -112,6 +112,10 @@ The runner provides these modules under their Squish names:
 - `objectmaphelper`: `RegularExpression`, `Wildcard`.
 - `squishinfo`.
 
+They live in `cutecumber/shim/`, which the runner puts first on `sys.path`. Import them by their bare
+names only (`import squish`), never as `cutecumber.shim.squish`, which would load a second copy of the
+module.
+
 Selectors are Squish's: `type`, `name`, `window`, `container`, `unnamed`, `visible`, `enabled`,
 `buddy`, `aboveWidget`, `leftWidget` and `occurrence`, and any other key matches the Qt property of that
 name (`text`, say), with exact values, regular expressions, wildcards and nested selectors. They resolve against QWidgets, item view items (`QModelIndex`) and the Qt Quick
