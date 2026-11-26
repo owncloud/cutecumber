@@ -4,12 +4,13 @@
 # Builds on its own (cmake -S probe) and as a subproject of an application
 # (add_subdirectory or FetchContent), which then links cutecumber::probe.
 cmake_minimum_required(VERSION 3.18)
-project(CutecumberProbe LANGUAGES CXX)
+project(CutecumberProbe VERSION 0.1.0 LANGUAGES CXX)
 
 if(CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR)
     set(CUTECUMBER_STANDALONE ON)
     set(CMAKE_CXX_STANDARD 17)
     set(CMAKE_CXX_STANDARD_REQUIRED ON)
+    include(CTest)
 else()
     set(CUTECUMBER_STANDALONE OFF)
 endif()
@@ -83,12 +84,26 @@ if(CUTECUMBER_STANDALONE)
     configure_package_config_file(CutecumberProbeConfig.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/CutecumberProbeConfig.cmake
         INSTALL_DESTINATION ${CUTECUMBER_CMAKE_DIR}
     )
-    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/CutecumberProbeConfig.cmake DESTINATION ${CUTECUMBER_CMAKE_DIR})
+    # 0.x: a minor version may break compatibility, so only the same minor version matches
+    write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/CutecumberProbeConfigVersion.cmake
+        COMPATIBILITY SameMinorVersion
+    )
+    install(FILES
+        ${CMAKE_CURRENT_BINARY_DIR}/CutecumberProbeConfig.cmake
+        ${CMAKE_CURRENT_BINARY_DIR}/CutecumberProbeConfigVersion.cmake
+        DESTINATION ${CUTECUMBER_CMAKE_DIR}
+    )
 endif()
 
-# The probe's own tests build by default only when the probe is the top-level project. An application
-# that wants them sets CUTECUMBER_BUILD_TESTS=ON and runs them with: ctest --test-dir <build>/<path to probe>
-option(CUTECUMBER_BUILD_TESTS "Build the probe's tests" ${CUTECUMBER_STANDALONE})
+# The probe's own tests build by default only when the probe is the top-level project and BUILD_TESTING (from
+# CTest) is on. An application that wants them sets CUTECUMBER_BUILD_TESTS=ON and runs them with:
+# ctest --test-dir <build>/<path to probe>
+if(CUTECUMBER_STANDALONE AND BUILD_TESTING)
+    set(CUTECUMBER_BUILD_TESTS_DEFAULT ON)
+else()
+    set(CUTECUMBER_BUILD_TESTS_DEFAULT OFF)
+endif()
+option(CUTECUMBER_BUILD_TESTS "Build the probe's tests" ${CUTECUMBER_BUILD_TESTS_DEFAULT})
 if(CUTECUMBER_BUILD_TESTS)
     enable_testing()
     add_subdirectory(tests)

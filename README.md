@@ -44,10 +44,12 @@ endif()
 
 The probe is an object library and starts itself from a `Q_COREAPP_STARTUP_FUNCTION`, so the
 application needs no code changes. A standalone build also installs a `CutecumberProbe` package for
-`find_package(CutecumberProbe)`, with the same `cutecumber::probe` target.
+`find_package(CutecumberProbe 0.1)`, with the same `cutecumber::probe` target. While the version is
+0.x, only the same minor version matches.
 
-The probe's own tests build when the probe is the top-level project; as a subproject they are off.
-The option `CUTECUMBER_BUILD_TESTS` overrides either default:
+The probe's own tests build when the probe is the top-level project and `BUILD_TESTING` is on (the
+default; `-DBUILD_TESTING=OFF` skips them); as a subproject they are off. The option
+`CUTECUMBER_BUILD_TESTS` overrides either default:
 
 ```sh
 cmake -S probe -B build -G Ninja
@@ -143,7 +145,7 @@ owncloud/client and the decisions behind it.
 
 ```sh
 cd harness
-pip install -e ".[test]" black==24.3.* pylint==3.2.*
+pip install -e ".[test]" "black==24.3.*" "pylint==3.2.*"
 pytest
 black --check .
 pylint cutecumber shim/*.py tests/*.py
