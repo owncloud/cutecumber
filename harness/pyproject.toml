@@ -14,6 +14,9 @@ license-files = ["LICENSE"]
 requires-python = ">=3.10"
 dependencies = ["gherkin-official>=29,<30"]
 
+[project.optional-dependencies]
+test = ["pytest"]
+
 [project.scripts]
 cutecumber = "cutecumber.__main__:main"
 
@@ -22,6 +25,11 @@ cutecumber = "cutecumber.__main__:main"
 # It is installed next to the cutecumber package and put first on sys.path by the
 # runner, so its modules are imported by their bare names, never as "shim.x".
 packages = ["cutecumber", "shim"]
+
+[tool.black]
+# Squish suites mix quote styles; the runner keeps them as written
+skip-string-normalization = true
+target-version = ["py310"]
 
 [tool.pytest.ini_options]
 pythonpath = [".", "shim", "tests"]

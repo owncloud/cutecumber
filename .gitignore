@@ -1,0 +1,9 @@
+# SPDX-FileCopyrightText: 2026 ownCloud GmbH - A Kiteworks Company and ownCloud contributors
+# SPDX-License-Identifier: MIT
+/build*/
+__pycache__/
+*.py[co]
+*.egg-info/
+.venv/
+.pytest_cache/
+CMakeLists.txt.user

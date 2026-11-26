@@ -1,0 +1,64 @@
+# SPDX-FileCopyrightText: 2026 ownCloud GmbH - A Kiteworks Company and ownCloud contributors
+# SPDX-License-Identifier: MIT
+#
+# Run from harness/: pylint cutecumber shim tests
+
+[MAIN]
+# The shim's Squish-named modules are imported by their bare names, the tests' helpers too
+init-hook='import sys; sys.path[:0] = ["shim", "tests"]'
+enable=all
+disable=
+    missing-docstring,
+    global-statement,
+    locally-disabled,
+    suppressed-message,
+    unused-variable,
+    too-many-public-methods,
+    bare-except,
+    fixme,
+fail-under=10
+load-plugins=
+    pylint.extensions.check_elif,
+    pylint.extensions.bad_builtin,
+    pylint.extensions.code_style,
+    pylint.extensions.overlapping_exceptions,
+    pylint.extensions.typing,
+    pylint.extensions.redefined_variable_type,
+py-version=3.10
+unsafe-load-any-extension=no
+
+[BASIC]
+attr-naming-style=snake_case
+class-const-naming-style=UPPER_CASE
+class-naming-style=PascalCase
+const-naming-style=UPPER_CASE
+function-naming-style=snake_case
+inlinevar-naming-style=snake_case
+method-naming-style=snake_case
+module-naming-style=any
+variable-naming-style=snake_case
+
+[DESIGN]
+max-args=8
+
+[VARIABLES]
+allow-global-unused-variables=no
+dummy-variables-rgx=^_*$
+# step functions take the context argument whether they use it or not
+ignored-argument-names=^context$|^_*$
+
+[STRING]
+check-quote-consistency=yes
+
+[FORMAT]
+indent-string='    '
+max-line-length=120
+
+[TYPECHECK]
+# the shim's object and test modules shadow these names for the checker
+ignored-classes=object,test
+
+[SIMILARITIES]
+ignore-comments=yes
+ignore-docstrings=yes
+ignore-imports=yes
