@@ -25,7 +25,7 @@
 
 #include <stdexcept>
 
-using namespace QtGuiProbe;
+using namespace Cutecumber;
 
 namespace {
 
@@ -336,16 +336,16 @@ private Q_SLOTS:
 
     void startIfRequestedWithoutEnvironment()
     {
-        qunsetenv("QT_GUI_TEST_PROBE");
+        qunsetenv("CUTECUMBER_PROBE");
         QCOMPARE(Probe::startIfRequested(), nullptr);
     }
 
     void servesLinesOverTheSocket()
     {
         const QString name = socketName(QStringLiteral("sock"));
-        qputenv("QT_GUI_TEST_PROBE", name.toLocal8Bit());
+        qputenv("CUTECUMBER_PROBE", name.toLocal8Bit());
         Probe *probe = Probe::startIfRequested();
-        qunsetenv("QT_GUI_TEST_PROBE");
+        qunsetenv("CUTECUMBER_PROBE");
         QVERIFY(probe);
         QLabel label(QStringLiteral("Grüße 🙂"));
         const QJsonObject ref = probe->registry().ref(&label);

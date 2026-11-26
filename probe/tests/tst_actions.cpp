@@ -35,7 +35,7 @@
 
 #include <optional>
 
-using namespace QtGuiProbe;
+using namespace Cutecumber;
 using namespace Qt::StringLiterals;
 
 namespace {

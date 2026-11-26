@@ -10,9 +10,9 @@ import object  # pylint: disable=redefined-builtin
 import squish
 from objectmaphelper import RegularExpression, Wildcard
 from fake_probe import FakeProbe
-from harness import client as client_module
-from harness.proxy import RemoteObject
-from harness.selectors import encode
+from cutecumber import client as client_module
+from cutecumber.proxy import RemoteObject
+from cutecumber.selectors import encode
 
 TREE = {"name": "tree", "type": "QTreeView", "visible": 1}
 

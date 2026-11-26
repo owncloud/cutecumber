@@ -10,10 +10,10 @@ import xml.etree.ElementTree as ET
 import pytest
 from suite_copy import SUITE_MIN, copy_suite
 
-from harness import __main__ as cli
-from harness import aut, bdd, report, results, suite
-from harness.console import ConsoleReporter
-from harness.tags import TagFilter
+from cutecumber import __main__ as cli
+from cutecumber import aut, bdd, report, results, suite
+from cutecumber.console import ConsoleReporter
+from cutecumber.tags import TagFilter
 
 HARNESS_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ENVVAR = "QT_LOGGING_RULES=sync.httplogger=true;gui.socketapi=false"
@@ -486,7 +486,7 @@ def test_sigterm_ends_the_process_with_143(tmp_path):
         [
             sys.executable,
             "-m",
-            "harness",
+            "cutecumber",
             "--testsuite",
             str(suite_dir),
             "--testcase",

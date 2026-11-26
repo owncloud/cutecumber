@@ -24,7 +24,7 @@
 
 #include <memory>
 
-using namespace QtGuiProbe;
+using namespace Cutecumber;
 
 namespace Fixture {
 class TestDialog : public QDialog

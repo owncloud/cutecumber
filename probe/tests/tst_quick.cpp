@@ -17,7 +17,7 @@
 
 #include <memory>
 
-using namespace QtGuiProbe;
+using namespace Cutecumber;
 
 // Stand-ins for the class names the QML engine and Qt Quick give their types.
 class QQuickProbeFixtureItem : public QObject

@@ -16,7 +16,7 @@
 #include <QStringList>
 #include <QUrl>
 
-namespace QtGuiProbe {
+namespace Cutecumber {
 
 namespace {
     template <typename Size>
@@ -179,4 +179,4 @@ QVariant fromJson(const QJsonValue &value, const Registry &registry)
     return value.toVariant();
 }
 
-} // namespace QtGuiProbe
+} // namespace Cutecumber

@@ -13,7 +13,7 @@ import re
 import socket
 import threading
 
-from harness.client import ProbeClient
+from cutecumber.client import ProbeClient
 
 
 class FakeObject:

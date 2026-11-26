@@ -13,7 +13,7 @@ class QObject;
 class QQuickItem;
 class QQuickWidget;
 
-namespace QtGuiProbe {
+namespace Cutecumber {
 
 /// Teaches `engine` and `registry` the Qt Quick items shown in a QQuickWidget:
 /// - Searches and `children` continue below a QQuickWidget at its rootObject(), and below an item at its
@@ -42,4 +42,4 @@ bool quickItemVisible(const QQuickItem *item);
 /// An invalid QRect if the item is not shown in a QQuickWidget.
 QRect quickItemRect(const QQuickItem *item);
 
-} // namespace QtGuiProbe
+} // namespace Cutecumber

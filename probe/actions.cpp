@@ -38,7 +38,7 @@
 #include <array>
 #include <cmath>
 
-namespace QtGuiProbe {
+namespace Cutecumber {
 
 namespace {
 
@@ -291,7 +291,7 @@ namespace {
             QWidget *widget = fixed ? guard.data() : keyboardWidget();
             // Return may have closed the dialog the widget was in
             if (!widget) {
-                qWarning("qtguiprobe: no widget left to type into");
+                qWarning("cutecumber: no widget left to type into");
                 return;
             }
             QTest::sendKeyEvent(QTest::Click, widget, stroke.key, stroke.text, stroke.mods);
@@ -456,7 +456,7 @@ namespace {
             const auto target = later.get();
             const auto where = target ? clickTarget(*target, true) : std::nullopt;
             if (!where || !where->widget) {
-                qWarning("qtguiprobe: the click target went away before the click");
+                qWarning("cutecumber: the click target went away before the click");
                 return;
             }
             const QPoint pos = offset ? where->rect.topLeft() + *offset : where->rect.center();
@@ -509,7 +509,7 @@ namespace {
         probe.postInput([button = QPointer<QAbstractButton>(button)] {
             const auto pos = button ? buttonHitPoint(button) : std::nullopt;
             if (!pos) {
-                qWarning("qtguiprobe: the button went away or stopped accepting clicks before the click");
+                qWarning("cutecumber: the button went away or stopped accepting clicks before the click");
                 return;
             }
             click(button, *pos, Qt::LeftButton, Qt::NoModifier, 1);
@@ -541,7 +541,7 @@ namespace {
             if (QWidget *receiver = target ? focusForTyping(*target) : nullptr) {
                 typeKeys(receiver, strokes);
             } else {
-                qWarning("qtguiprobe: the typing target went away before typing");
+                qWarning("cutecumber: the typing target went away before typing");
             }
         });
         return QJsonValue::Null;
@@ -636,4 +636,4 @@ void registerActions(Probe &probe)
     });
 }
 
-} // namespace QtGuiProbe
+} // namespace Cutecumber

@@ -8,7 +8,7 @@
 #include <cmath>
 #include <limits>
 
-namespace QtGuiProbe {
+namespace Cutecumber {
 
 namespace {
     const QString handleKey = QStringLiteral("$handle");
@@ -181,4 +181,4 @@ void Registry::registerClassNameHook(ClassNameHook hook)
     _classNameHooks.push_back(std::move(hook));
 }
 
-} // namespace QtGuiProbe
+} // namespace Cutecumber

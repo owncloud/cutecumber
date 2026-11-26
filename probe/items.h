@@ -17,7 +17,7 @@ class QAbstractItemView;
 class QModelIndex;
 class QWidget;
 
-namespace QtGuiProbe {
+namespace Cutecumber {
 
 /// Teaches `engine` the Squish item types:
 /// - {"type": "QModelIndex", "container": <view or index>, "row", "column", "text", ...}: the direct rows of the
@@ -60,4 +60,4 @@ QWidget *itemWidget(const Target &target);
 /// (collapsed, hidden, not in a QQuickWidget) or unknown.
 QRect itemRect(const Target &target);
 
-} // namespace QtGuiProbe
+} // namespace Cutecumber

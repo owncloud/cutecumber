@@ -6,22 +6,22 @@ requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "qtguiprobe-harness"
+name = "cutecumber"
 version = "0.1.0"
-description = "Squish-compatible Python test runner on top of the Qt GUI test probe"
+description = "Squish-compatible BDD GUI test runner for Qt Widgets and Qt Quick applications"
 license = "MIT"
 license-files = ["LICENSE"]
 requires-python = ">=3.10"
 dependencies = ["gherkin-official>=29,<30"]
 
 [project.scripts]
-qtguiprobe-run = "harness.__main__:main"
+cutecumber = "cutecumber.__main__:main"
 
 [tool.setuptools]
 # shim/ holds the Squish-named modules (squish, object, objectmaphelper, ...).
-# It is installed next to the harness package and put first on sys.path by the
+# It is installed next to the cutecumber package and put first on sys.path by the
 # runner, so its modules are imported by their bare names, never as "shim.x".
-packages = ["harness", "shim"]
+packages = ["cutecumber", "shim"]
 
 [tool.pytest.ini_options]
 pythonpath = [".", "shim", "tests"]

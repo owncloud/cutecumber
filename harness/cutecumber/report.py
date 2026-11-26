@@ -18,7 +18,7 @@ from dataclasses import dataclass, field
 from typing import NamedTuple
 from urllib.parse import quote
 
-from harness import bdd, results
+from cutecumber import bdd, results
 
 PASSED = "passed"
 FAILED = "failed"

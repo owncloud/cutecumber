@@ -6,7 +6,7 @@
 #include <QJsonValue>
 #include <QVariant>
 
-namespace QtGuiProbe {
+namespace Cutecumber {
 
 class Registry;
 
@@ -19,4 +19,4 @@ QJsonValue toJson(const QVariant &value, Registry &registry);
 /// for (throws ProbeError like Registry::resolve); everything else follows QJsonValue::toVariant().
 QVariant fromJson(const QJsonValue &value, const Registry &registry);
 
-} // namespace QtGuiProbe
+} // namespace Cutecumber

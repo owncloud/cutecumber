@@ -2,8 +2,8 @@
 # SPDX-License-Identifier: MIT
 """Python proxies for objects that live in the application under test."""
 
-from harness.client import ProbeError
-from harness.selectors import HandleRef, encode_value
+from cutecumber.client import ProbeError
+from cutecumber.selectors import HandleRef, encode_value
 
 # Error codes that mean a handle no longer refers to a live object.
 _STALE = ("DeadObject", "NoSuchObject")

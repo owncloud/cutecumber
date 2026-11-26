@@ -9,10 +9,10 @@ import importlib
 import inspect
 import time
 
-from harness.client import current_client
-from harness.proxy import RemoteObject, request, wrap
-from harness.selectors import encode, encode_value
-from harness.settings import test_settings
+from cutecumber.client import current_client
+from cutecumber.proxy import RemoteObject, request, wrap
+from cutecumber.selectors import encode, encode_value
+from cutecumber.settings import test_settings
 
 testSettings = test_settings
 
@@ -199,8 +199,8 @@ def waitFor(cond, timeout_ms=None):
 
 
 def _aut():
-    # Imported on use: harness.aut needs the runner's configuration.
-    return importlib.import_module("harness.aut")
+    # Imported on use: cutecumber.aut needs the runner's configuration.
+    return importlib.import_module("cutecumber.aut")
 
 
 def startApplication(*args, **kwargs):

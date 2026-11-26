@@ -16,7 +16,7 @@
 #include <optional>
 #include <vector>
 
-namespace QtGuiProbe {
+namespace Cutecumber {
 
 /// True if the selector value `want` matches `have`: {"$regex": p} is a QRegularExpression search,
 /// {"$wildcard": p} a whole-string wildcard match, and a number or bool on either side compares by value
@@ -112,4 +112,4 @@ private:
     std::vector<ReadyCheck> _readyChecks;
 };
 
-} // namespace QtGuiProbe
+} // namespace Cutecumber

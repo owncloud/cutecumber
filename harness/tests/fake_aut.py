@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MIT
 """Stand-in application under test.
 
-It serves the fake probe on the Unix socket named by ``QT_GUI_TEST_PROBE``,
+It serves the fake probe on the Unix socket named by ``CUTECUMBER_PROBE``,
 the way the real probe's QLocalServer does, and keeps running after the
 harness disconnects, so ``detach()`` has to terminate it.
 
@@ -50,7 +50,7 @@ def main():
         print(f"{say} on stderr", file=sys.stderr, flush=True)
     time.sleep(float(os.environ.get("FAKE_AUT_DELAY", "0")))
     server = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-    server.bind(os.environ["QT_GUI_TEST_PROBE"])
+    server.bind(os.environ["CUTECUMBER_PROBE"])
     server.listen(1)
     conn, _ = server.accept()
     FakeProbe(sock=conn, pid=os.getpid())

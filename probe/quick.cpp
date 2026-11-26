@@ -13,7 +13,7 @@
 #include <QQuickWindow>
 #include <QRegularExpression>
 
-namespace QtGuiProbe {
+namespace Cutecumber {
 
 namespace {
 
@@ -185,4 +185,4 @@ QRect quickItemRect(const QQuickItem *item)
     return item->mapRectToScene(item->boundingRect()).toAlignedRect();
 }
 
-} // namespace QtGuiProbe
+} // namespace Cutecumber

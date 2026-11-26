@@ -2,6 +2,6 @@
 # SPDX-License-Identifier: MIT
 """Squish's ``objectmaphelper`` module: selector value types."""
 
-from harness.selectors import RegularExpression, Wildcard
+from cutecumber.selectors import RegularExpression, Wildcard
 
 __all__ = ["RegularExpression", "Wildcard"]

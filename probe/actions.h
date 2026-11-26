@@ -3,7 +3,7 @@
 
 #pragma once
 
-namespace QtGuiProbe {
+namespace Cutecumber {
 
 class Probe;
 
@@ -33,4 +33,4 @@ class Probe;
 /// reports the allowlisted methods through `isMethod`.
 void registerActions(Probe &probe);
 
-} // namespace QtGuiProbe
+} // namespace Cutecumber

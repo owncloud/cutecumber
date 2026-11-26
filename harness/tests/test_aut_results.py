@@ -18,9 +18,9 @@ from suite_copy import copy_suite
 
 import squish
 import squishinfo
-from harness import __main__ as cli
-from harness import aut, bdd, builtins_setup, console, results
-from harness import client as client_module
+from cutecumber import __main__ as cli
+from cutecumber import aut, bdd, builtins_setup, console, results
+from cutecumber import client as client_module
 
 FAKE_AUT = Path(__file__).resolve().parent / "fake_aut.py"
 
@@ -80,14 +80,14 @@ def test_probe_socket_is_an_absolute_path_in_the_temp_dir(monkeypatch):
     real_popen = aut.subprocess.Popen
 
     def spy(*args, **kwargs):
-        seen["path"] = kwargs["env"]["QT_GUI_TEST_PROBE"]
+        seen["path"] = kwargs["env"]["CUTECUMBER_PROBE"]
         return real_popen(*args, **kwargs)
 
     monkeypatch.setattr(aut.subprocess, "Popen", spy)
     squish.startApplication("fakeaut")
     path = seen["path"]
     assert os.path.isabs(path)
-    assert Path(path).name.startswith(f"qtguiprobe-{os.getpid()}-")
+    assert Path(path).name.startswith(f"cutecumber-{os.getpid()}-")
 
 
 @pytest.mark.usefixtures("auts")

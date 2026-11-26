@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: 2026 ownCloud GmbH - A Kiteworks Company and ownCloud contributors
 // SPDX-License-Identifier: MIT
 
-// The probe starts by itself when QT_GUI_TEST_PROBE is set before the application is constructed.
+// The probe starts by itself when CUTECUMBER_PROBE is set before the application is constructed.
 
 #include <QApplication>
 #include <QDir>
@@ -42,7 +42,7 @@ private Q_SLOTS:
 int main(int argc, char **argv)
 {
     // applicationPid() is the process id, known before the application exists
-    qputenv("QT_GUI_TEST_PROBE", socketName().toLocal8Bit());
+    qputenv("CUTECUMBER_PROBE", socketName().toLocal8Bit());
     QApplication app(argc, argv);
     TestStartup test;
     return QTest::qExec(&test, argc, argv);

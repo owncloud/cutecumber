@@ -9,7 +9,7 @@ import sys
 import pytest
 import squishinfo
 
-from harness import aut, results
+from cutecumber import aut, results
 
 
 @pytest.fixture

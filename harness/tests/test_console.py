@@ -13,9 +13,9 @@ import threading
 import pytest
 from suite_copy import copy_suite
 
-from harness import bdd, console, results, suite
-from harness.console import ConsoleReporter
-from harness.tags import TagFilter
+from cutecumber import bdd, console, results, suite
+from cutecumber.console import ConsoleReporter
+from cutecumber.tags import TagFilter
 
 FEATURE = """\
 Feature: console output

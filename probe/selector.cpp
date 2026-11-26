@@ -22,7 +22,7 @@
 #include <cmath>
 #include <limits>
 
-namespace QtGuiProbe {
+namespace Cutecumber {
 
 namespace {
 
@@ -813,4 +813,4 @@ std::optional<SelectorEngine::PropertyValue> SelectorEngine::readProperty(const 
     return std::nullopt;
 }
 
-} // namespace QtGuiProbe
+} // namespace Cutecumber

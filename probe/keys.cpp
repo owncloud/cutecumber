@@ -8,7 +8,7 @@
 #include <QHash>
 #include <QStringList>
 
-namespace QtGuiProbe {
+namespace Cutecumber {
 
 namespace {
 
@@ -174,4 +174,4 @@ std::vector<KeyStroke> parseSquishKeys(const QString &keys)
     return strokes;
 }
 
-} // namespace QtGuiProbe
+} // namespace Cutecumber

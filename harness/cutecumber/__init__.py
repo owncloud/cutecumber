@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 ownCloud GmbH - A Kiteworks Company and ownCloud contributors
 # SPDX-License-Identifier: MIT
-"""Squish-compatible test harness on top of the Qt GUI test probe."""
+"""CuteCumber: a Squish-compatible BDD test runner on top of the CuteCumber probe."""
 
 from pathlib import Path
 

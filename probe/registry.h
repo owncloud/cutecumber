@@ -15,7 +15,7 @@
 #include <variant>
 #include <vector>
 
-namespace QtGuiProbe {
+namespace Cutecumber {
 
 /// An error answered to the client as {"code": ..., "message": ..., ...extra}.
 struct ProbeError
@@ -109,4 +109,4 @@ private:
     int _nextHandle = 1;
 };
 
-} // namespace QtGuiProbe
+} // namespace Cutecumber

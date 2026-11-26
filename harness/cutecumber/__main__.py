@@ -2,10 +2,11 @@
 # SPDX-License-Identifier: MIT
 """The runner's command line, after squishrunner's.
 
-Run a suite with ``python -m harness --testsuite DIR`` and optionally
-``--testcase NAME``, ``--tags EXPR``, ``--abortOnFail``, ``--envvar K=V``,
-``--aut NAME=DIR``, ``--aut-log-dir DIR``, ``--reportgen html,DIR`` or
-``--reportgen junitxml,FILE`` and ``--console MODE``. The exit code is 0 only
+Run a suite with ``cutecumber --testsuite DIR`` (or ``python -m cutecumber``)
+and optionally ``--testcase NAME``, ``--tags EXPR``, ``--abortOnFail``,
+``--envvar K=V``, ``--aut NAME=DIR``, ``--aut-log-dir DIR``,
+``--reportgen html,DIR`` or ``--reportgen junitxml,FILE`` and
+``--console MODE``. The exit code is 0 only
 if nothing failed or errored.
 """
 
@@ -13,8 +14,8 @@ import argparse
 import os
 import sys
 
-from harness import aut, bdd, console, report, suite
-from harness.tags import TagFilter
+from cutecumber import aut, bdd, console, report, suite
+from cutecumber.tags import TagFilter
 
 REPORT_FORMATS = ("html", "junitxml")
 CONSOLE_MODES = ("auto", console.PRETTY, console.GITHUB, "quiet")
@@ -46,7 +47,7 @@ def _reportgen(text):
 
 def parser():
     result = argparse.ArgumentParser(
-        prog="python -m harness",
+        prog="cutecumber",
         description="Run a Squish test suite against applications with the probe.",
     )
     add = result.add_argument

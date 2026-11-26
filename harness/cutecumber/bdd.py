@@ -23,8 +23,8 @@ from gherkin.parser import Parser
 from gherkin.pickles.compiler import Compiler
 from gherkin.token_matcher import TokenMatcher
 
-from harness import results
-from harness.tags import TagFilter
+from cutecumber import results
+from cutecumber.tags import TagFilter
 
 # Step results passed to Reporter.step().
 PASSED = "passed"

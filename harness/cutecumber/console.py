@@ -58,7 +58,7 @@ import time
 import unicodedata
 import weakref
 
-from harness import bdd, report, results
+from cutecumber import bdd, report, results
 
 PRETTY = "pretty"
 GITHUB = "github"

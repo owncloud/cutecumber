@@ -9,9 +9,9 @@
 import os
 
 import squishinfo
-from harness import results
-from harness.results import Results
-from harness.settings import test_settings
+from cutecumber import results
+from cutecumber.results import Results
+from cutecumber.settings import test_settings
 
 __all__ = [
     "Results",

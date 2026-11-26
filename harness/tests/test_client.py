@@ -9,7 +9,7 @@ import time
 
 import pytest
 
-from harness.client import ProbeClient, ProbeError
+from cutecumber.client import ProbeClient, ProbeError
 
 
 @pytest.fixture

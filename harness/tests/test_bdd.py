@@ -14,9 +14,9 @@ import pytest
 from suite_copy import SUITE_MIN, copy_suite
 
 from fake_probe import FakeError, FakeProbe
-from harness import __main__ as cli
-from harness import aut, bdd, results, suite
-from harness.tags import TagFilter
+from cutecumber import __main__ as cli
+from cutecumber import aut, bdd, results, suite
+from cutecumber.tags import TagFilter
 
 
 class RecordingReporter:

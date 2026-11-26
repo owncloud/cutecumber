@@ -23,7 +23,7 @@
 class QLocalServer;
 class QLocalSocket;
 
-namespace QtGuiProbe {
+namespace Cutecumber {
 
 /// Serves the line-based JSON protocol on a QLocalServer, one connection at a time, on the GUI thread.
 class Probe : public QObject
@@ -43,7 +43,7 @@ public:
     explicit Probe(QObject *parent = nullptr);
     ~Probe() override;
 
-    /// Starts the probe on the socket named by QT_GUI_TEST_PROBE; nullptr if it is unset or listening fails.
+    /// Starts the probe on the socket named by CUTECUMBER_PROBE; nullptr if it is unset or listening fails.
     /// A second call returns the running probe.
     static Probe *startIfRequested();
 
@@ -115,4 +115,4 @@ private:
 /// The string parameter `key`; throws BadRequest if it is missing or not a string.
 QString stringParam(const QJsonObject &params, const QString &key);
 
-} // namespace QtGuiProbe
+} // namespace Cutecumber

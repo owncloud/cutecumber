@@ -19,7 +19,7 @@
 
 #include <cmath>
 
-namespace QtGuiProbe {
+namespace Cutecumber {
 
 namespace {
 
@@ -458,4 +458,4 @@ QRect itemRect(const Target &target)
     return widget ? widget->rect() : QRect();
 }
 
-} // namespace QtGuiProbe
+} // namespace Cutecumber

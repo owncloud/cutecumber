@@ -19,7 +19,7 @@ import tempfile
 import threading
 import time
 
-from harness import client as client_module
+from cutecumber import client as client_module
 
 # Squish's AUTPMTimeout: how long an application may take to open its probe.
 DEFAULT_START_TIMEOUT_MS = 15000
@@ -294,10 +294,10 @@ def startApplication(cmdline):
     name = args[0]
     directory, executable = _executable(name)
     socket_path = os.path.join(
-        tempfile.gettempdir(), f"qtguiprobe-{os.getpid()}-{next(_SOCKET_NUMBERS)}"
+        tempfile.gettempdir(), f"cutecumber-{os.getpid()}-{next(_SOCKET_NUMBERS)}"
     )
     _remove(socket_path)
-    env = {**os.environ, **_ENV, "QT_GUI_TEST_PROBE": socket_path}
+    env = {**os.environ, **_ENV, "CUTECUMBER_PROBE": socket_path}
     log = _open_log(name) if _LOG_DIR else None
     try:
         # pylint: disable-next=consider-using-with

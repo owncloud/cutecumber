@@ -8,7 +8,7 @@
 
 #include <vector>
 
-namespace QtGuiProbe {
+namespace Cutecumber {
 
 /// One key press and release: the key, the modifiers held, and the text it types (empty for keys that type none).
 struct KeyStroke
@@ -26,4 +26,4 @@ struct KeyStroke
 /// unterminated token.
 std::vector<KeyStroke> parseSquishKeys(const QString &keys);
 
-} // namespace QtGuiProbe
+} // namespace Cutecumber

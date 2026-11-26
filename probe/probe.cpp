@@ -21,11 +21,11 @@
 
 namespace {
 
-Q_LOGGING_CATEGORY(lcProbe, "qtguiprobe", QtInfoMsg)
+Q_LOGGING_CATEGORY(lcProbe, "cutecumber", QtInfoMsg)
 
-const char envVar[] = "QT_GUI_TEST_PROBE";
+const char envVar[] = "CUTECUMBER_PROBE";
 
-QPointer<QtGuiProbe::Probe> runningProbe;
+QPointer<Cutecumber::Probe> runningProbe;
 
 // Starts the probe once the event loop runs. Inert unless the environment variable is set.
 void startProbeLater()
@@ -33,10 +33,10 @@ void startProbeLater()
     if (qEnvironmentVariableIsEmpty(envVar)) {
         return;
     }
-    QTimer::singleShot(0, QCoreApplication::instance(), [] { QtGuiProbe::Probe::startIfRequested(); });
+    QTimer::singleShot(0, QCoreApplication::instance(), [] { Cutecumber::Probe::startIfRequested(); });
 }
 
-QJsonObject errorObject(const QtGuiProbe::ProbeError &error)
+QJsonObject errorObject(const Cutecumber::ProbeError &error)
 {
     QJsonObject object = error.extra;
     object.insert(QStringLiteral("code"), error.code);
@@ -44,7 +44,7 @@ QJsonObject errorObject(const QtGuiProbe::ProbeError &error)
     return object;
 }
 
-QtGuiProbe::ProbeError badRequest(const QString &message)
+Cutecumber::ProbeError badRequest(const QString &message)
 {
     return {QStringLiteral("BadRequest"), message};
 }
@@ -79,7 +79,7 @@ private:
 
 Q_COREAPP_STARTUP_FUNCTION(startProbeLater)
 
-namespace QtGuiProbe {
+namespace Cutecumber {
 
 QString stringParam(const QJsonObject &params, const QString &key)
 {
@@ -423,4 +423,4 @@ QByteArray Probe::handleLine(const QByteArray &line)
     return QJsonDocument(response).toJson(QJsonDocument::Compact) + '\n';
 }
 
-} // namespace QtGuiProbe
+} // namespace Cutecumber

@@ -2,9 +2,9 @@
 # SPDX-License-Identifier: MIT
 """Squish's ``object`` module."""
 
-from harness.client import current_client
-from harness.proxy import RemoteObject, request, wrap
-from harness.selectors import encode
+from cutecumber.client import current_client
+from cutecumber.proxy import RemoteObject, request, wrap
+from cutecumber.selectors import encode
 
 
 def children(obj):
