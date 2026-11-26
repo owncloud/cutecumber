@@ -22,12 +22,9 @@ cutecumber = "cutecumber.__main__:main"
 
 [tool.setuptools]
 # cutecumber/shim/ holds the Squish-named modules (squish, object, objectmaphelper,
-# ...). It is package data, no package: the runner puts the directory first on
-# sys.path, so its modules are imported by their bare names only.
-packages = ["cutecumber"]
-
-[tool.setuptools.package-data]
-cutecumber = ["shim/*.py"]
+# ...). It is installed as a namespace package, but the runner puts the directory
+# first on sys.path, so its modules are imported by their bare names only.
+packages = ["cutecumber", "cutecumber.shim"]
 
 [tool.black]
 # Squish suites mix quote styles; the runner keeps them as written
